@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
 import Profile from '@/components/Profile'
+import EditProfile from '@/components/EditProfile'
 import Ping from '@/components/Ping'
 
 Vue.use(Router)
@@ -37,9 +38,18 @@ const router = new Router({
       component: Register
     },
     {
-      path: '/profile',
+      path: '/user/:id',
       name: 'Profile',
       component: Profile,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      // 用户修改自己的个人信息
+      path: '/edit-profile',
+      name: 'EditProfile',
+      component: EditProfile,
       meta: {
         requiresAuth: true
       }
@@ -48,7 +58,8 @@ const router = new Router({
       path: '/ping',
       name: 'Ping',
       component: Ping
-    }
+    },
+
   ]
 })
 

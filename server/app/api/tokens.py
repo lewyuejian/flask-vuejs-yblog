@@ -7,7 +7,7 @@ from app.api.auth import basic_auth, token_auth
 @bp.route('/tokens', methods=['POST'])
 @basic_auth.login_required
 def get_token():
-    token = g.current_user.get_token()
+    token = g.current_user.get_jwt()
     db.session.commit()
     return jsonify({'token': token})
 
@@ -17,3 +17,4 @@ def revoke_token():
     g.current_user.revoke_token()
     db.session.commit()
     return '', 204
+

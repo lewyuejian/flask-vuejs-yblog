@@ -19,7 +19,7 @@
           </li>
         </ul>
 
-        <form class="form-inline navbar-left mr-auto">
+        <form class="form-inline navbar-left mr-auto input-group">
           <input class="form-control mr-sm-2" type="search" placeholder="Search">
           <!-- 暂时先禁止提交，后续实现搜索再改回 type="submit" -->
           <button class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
@@ -30,7 +30,7 @@
             <a class="nav-link disabled" href="#">Messages</a>
           </li>
           <li class="nav-item">
-            <router-link to="/profile" class="nav-link">Profile</router-link>
+            <router-link v-bind:to="{ name: 'Profile', params: { id: sharedState.user_id }}" class="nav-link">Profile</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/login" class="nav-link">Login</router-link>
@@ -43,6 +43,7 @@
     </div>
   </nav>
 </template>
+
 
 <script>
 import store from '../store.js'
@@ -62,3 +63,12 @@ export default {
   }
 }
 </script>
+
+<style>
+.input-group {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    width: 50%;
+}
+</style>

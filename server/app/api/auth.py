@@ -25,7 +25,7 @@ def basic_auth_error():
 @token_auth.verify_token
 def verify_token(token):
     '''用于检查用户请求是否有token，并且token真实存在，还在有效期内'''
-    g.current_user = User.check_token(token) if token else None
+    g.current_user = User.verify_jwt(token) if token else None
     return g.current_user is not None
 
 
